@@ -61,7 +61,7 @@ class TestSummarizer(unittest.TestCase):
             data={"text": ""}
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 400)
         self.assertIn(b"Please enter some text!", response.data)
 
     def test_whitespace_input(self):
@@ -72,7 +72,7 @@ class TestSummarizer(unittest.TestCase):
             data={"text": "     "}
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 400)
         self.assertIn(b"Please enter some text!", response.data)
     def test_home_page(self):
         client = app.test_client()

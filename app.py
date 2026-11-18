@@ -15,7 +15,7 @@ def summarize():
     user_text = request.form.get("text", "")
 
     if not user_text.strip():
-        return "Please enter some text!"
+        return "Please enter some text!", 400
 
     try:
         summary = summarize_text(user_text)
