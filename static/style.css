@@ -1,0 +1,92 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6fb;
+    color: #25253a;
+    margin: 40px;
+}
+
+h1 {
+    color: #6354b6;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    background-color: white;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    background-color: #6354b6;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #483a96;
+}
+
+/* Summary Result Card */
+
+.result-card {
+    background-color: white;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Summary Title */
+
+.result-card h2 {
+    color: #6354b6;
+    margin-bottom: 20px;
+}
+
+/* AI Generated Summary */
+
+.summary {
+    background-color: #f4f6fb;
+    padding: 20px;
+    border-radius: 8px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin-bottom: 25px;
+}
+
+/* Back Link */
+
+.result-card a {
+    display: inline-block;
+    background-color: #6354b6;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.result-card a:hover {
+    background-color: #483a96;
+}

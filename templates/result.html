@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Generated Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>AI Generated Summary</h1>
+
+    <div class="result-card">
+        <h2>Your Summary</h2>
+
+        <div class="summary">
+            {{ summary }}
+        </div>
+
+        <a href="/">Summarize Another Text</a>
+    </div>
+</body>
+</html>
