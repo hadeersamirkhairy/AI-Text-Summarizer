@@ -1,28 +1,39 @@
 # AI Text Summarizer
 
-A Flask-based AI Text Summarization web application powered by IBM watsonx.ai and the Granite LLM.
+An AI-powered text summarization web application built with Python and Flask, integrated with IBM watsonx.ai and the Granite Large Language Model (LLM).
 
-The application allows users to submit text and receive AI-generated summaries through a simple web interface.
+The application allows users to submit text through a web interface and receive concise, AI-generated summaries in three clear bullet points.
+
+## Live Demo
+
+**Try the application:** https://ai-text-summarizer-inky.vercel.app/
 
 ## Features
 
 - AI-powered text summarization.
-- Integration with IBM watsonx.ai and Granite LLM.
-- Flask-based web application.
+- Integration with IBM watsonx.ai.
+- Powered by the IBM Granite LLM (`ibm/granite-4-h-small`).
+- Generates summaries in three clear bullet points.
+- Simple and responsive web interface.
 - Input validation and error handling.
 - Secure API credential management using environment variables.
-- Automated unit testing.
+- Automated unit testing with Python unittest.
 - Test coverage measurement using Coverage.py.
+- Deployed on Vercel.
 
 ## Tech Stack
 
-- Python
-- Flask
-- IBM watsonx.ai
-- Granite LLM
-- HTML & CSS
-- Python unittest
-- Coverage.py
+| Category | Technology |
+|---|---|
+| Programming Language | Python |
+| Backend Framework | Flask |
+| AI Platform | IBM watsonx.ai |
+| Language Model | IBM Granite |
+| Frontend | HTML, CSS |
+| Testing | Python unittest |
+| Code Coverage | Coverage.py |
+| Deployment | Vercel |
+| Version Control | Git & GitHub |
 
 ## Project Structure
 
@@ -48,33 +59,41 @@ AI-Text-Summarizer/
     └── test_ai_service.py
 ```
 
-## Installation
+## Installation and Setup
 
-1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/hadeersamirkhairy/AI-Text-Summarizer.git
 ```
 
-2. Navigate to the project directory:
+### 2. Navigate to the project directory
 
 ```bash
 cd AI-Text-Summarizer
 ```
 
-3. Create a virtual environment:
+### 3. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-4. Activate the virtual environment (Windows):
+### 4. Activate the virtual environment
+
+Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-5. Install dependencies:
+macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+### 5. Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
@@ -90,9 +109,11 @@ IBM_PROJECT_ID=your_project_id
 IBM_URL=your_watsonx_endpoint
 ```
 
-**Important:** Never upload your `.env` file or expose your API credentials.
+**Security Note:** Never commit your `.env` file or expose API credentials in your source code or public repositories.
 
-## Run the Application
+For production deployment, configure the same environment variables through the Vercel project settings.
+
+## Run the Application Locally
 
 ```bash
 python app.py
@@ -104,7 +125,7 @@ Open your browser and navigate to:
 http://127.0.0.1:5000
 ```
 
-## Run Tests
+## Testing
 
 Run the automated test suite:
 
@@ -124,6 +145,16 @@ Generate the coverage report:
 python -m coverage report -m
 ```
 
+## Deployment
+
+The application is deployed on **Vercel** and connected to the GitHub repository.
+
+The deployment uses environment variables to securely manage IBM watsonx.ai credentials.
+
+**Live Application:** https://ai-text-summarizer-inky.vercel.app/
+
 ## Author
+
+**Hadeer Samir**
 
 Developed as a Python and Generative AI application project.
