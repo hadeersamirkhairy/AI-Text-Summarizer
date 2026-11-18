@@ -12,7 +12,6 @@ class TestSummarizer(unittest.TestCase):
         # Simulate IBM API failure
         mock_summarize.side_effect = Exception("Simulated API error")
 
-        # Send a fake POST request
         client = app.test_client()
 
         response = client.post(
@@ -20,12 +19,15 @@ class TestSummarizer(unittest.TestCase):
             data={"text": "This is a sample text."}
         )
 
-        # Check the response
+        # Verify error response
         self.assertEqual(response.status_code, 502)
-
         self.assertIn(
             b"Unable to generate summary",
             response.data
+        )
+
+        mock_summarize.assert_called_once_with(
+            "This is a sample text."
         )
 
     @patch("app.summarize_text")
@@ -34,10 +36,8 @@ class TestSummarizer(unittest.TestCase):
         # Simulate a successful AI response
         mock_summarize.return_value = "AI improves healthcare."
 
-        # Create Flask test client
         client = app.test_client()
 
-        # Simulate user submitting text
         response = client.post(
             "/summarize",
             data={"text": "Artificial intelligence helps doctors."}
@@ -46,13 +46,19 @@ class TestSummarizer(unittest.TestCase):
         # Verify successful HTTP response
         self.assertEqual(response.status_code, 200)
 
-        # Verify the summary appears on the page
+        # Verify summary appears on the page
         self.assertIn(
             b"AI improves healthcare.",
             response.data
         )
 
-    def test_empty_input(self):
+        # Verify AI received the correct input
+        mock_summarize.assert_called_once_with(
+            "Artificial intelligence helps doctors."
+        )
+
+    @patch("app.summarize_text")
+    def test_empty_input(self, mock_summarize):
 
         client = app.test_client()
 
@@ -62,9 +68,17 @@ class TestSummarizer(unittest.TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
-        self.assertIn(b"Please enter some text!", response.data)
+        self.assertIn(
+            b"Please enter some text!",
+            response.data
+        )
 
-    def test_whitespace_input(self):
+        # Verify AI was not called
+        mock_summarize.assert_not_called()
+
+    @patch("app.summarize_text")
+    def test_whitespace_input(self, mock_summarize):
+
         client = app.test_client()
 
         response = client.post(
@@ -73,15 +87,22 @@ class TestSummarizer(unittest.TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
-        self.assertIn(b"Please enter some text!", response.data)
+        self.assertIn(
+            b"Please enter some text!",
+            response.data
+        )
+
+        # Verify AI was not called
+        mock_summarize.assert_not_called()
+
     def test_home_page(self):
+
         client = app.test_client()
 
         response = client.get("/")
 
         self.assertEqual(response.status_code, 200)
 
+
 if __name__ == "__main__":
     unittest.main()
-
-
